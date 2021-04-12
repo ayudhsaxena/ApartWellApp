@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ApartWell</string>
+    <string name="usernameTextView">Username</string>
+    <string name="passwordTextView">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="sign_up_button">Sign Up!</string>
+    <string name="login">Login!</string>
+    <string name="main_title">Welcome to ApartWell!</string>
+    <string name="firstNameTextView">First Name</string>
+    <string name="lastNameTextView">Last Name</string>
+    <string name="emailTextView">E-mail\nAddress</string>
+    <string name="contactTextView">Contact (+91)</string>
+    <string name="back_button">Back</string>
+    <string name="done_button">Done</string>
+    <string name="empty_error">Fill in all the fields!</string>
+    <string name="nextButton">Next</string>
+    <string name="incorrectPassword">The password entered is incorrect</string>
+    <string name="missingUsername">This username doesn\'t exist</string>
+</resources>

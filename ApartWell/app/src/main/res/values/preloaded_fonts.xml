@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/cabin_semibold</item>
+        <item>@font/cantora_one</item>
+        <item>@font/crete_round</item>
+        <item>@font/fascinate_inline</item>
+        <item>@font/hammersmith_one</item>
+        <item>@font/holtwood_one_sc</item>
+        <item>@font/lilita_one</item>
+        <item>@font/luckiest_guy</item>
+        <item>@font/monofett</item>
+        <item>@font/monoton</item>
+        <item>@font/mouse_memoirs</item>
+        <item>@font/palanquin_dark_semibold</item>
+        <item>@font/palanquin_semibold</item>
+        <item>@font/passion_one</item>
+        <item>@font/poppins_medium</item>
+        <item>@font/poppins_semibold</item>
+        <item>@font/raleway_bold</item>
+        <item>@font/roboto_medium</item>
+        <item>@font/spicy_rice</item>
+        <item>@font/text_me_one</item>
+    </array>
+</resources>

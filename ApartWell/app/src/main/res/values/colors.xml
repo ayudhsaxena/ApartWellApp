@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="black">#000000</color>
+    <color name="BG">#313131</color>
+    <color name="spinnerBG">#dfe6e9</color>
+    <color name="lavenderRose">#FDA7DF</color>
+    <color name="prettyPlease">#FFCCCC</color>
+    <color name="lightIndigo">#7158e2</color>
+    <color name="liberty">#474787</color>
+    <color name="protosPylon">#00a8ff</color>
+    <color name="fadedPoster">#81ecec</color>
+    <color name="energos">#C4E538</color>
+</resources>
