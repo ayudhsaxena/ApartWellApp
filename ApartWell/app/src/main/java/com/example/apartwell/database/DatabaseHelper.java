@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.apartwell.models.Booking;
 import com.example.apartwell.models.User;
 
 import java.util.ArrayList;
@@ -18,19 +19,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper sInstance;
 
     private static final  String DATABASE_NAME = "AMS";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Table Names
     private static final String TABLE_User = "User";
+    private static final String TABLE_Booking = "Booking";
 
     // User Table Columns
-    private static final String KEY_USER_ID = "id";
+    private static final String KEY_USER_ID = "user_id";
     private static final String KEY_USER_NAME = "userName";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_FIRSTNAME = "firstname";
     private static final String KEY_SECONDNAME = "secondname";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_MOBILENO = "mobile";
+
+    // Booking Table Columns
+    private static final String KEY_BOOKING_ID = "booking_id";
+    private static final String KEY_USER_ID_BOOKING = KEY_USER_ID;
+    private static final String KEY_FACILITY = "facility";
+    private static final String KEY_STATUS = "status";
+    private static final String KEY_DATE = "date";
+    private static final String KEY_TIME = "time";
+    private static final String KEY_DURATION = "duration";
+
 
 
     private DatabaseHelper(Context context){
@@ -50,7 +62,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 KEY_MOBILENO + " TEXT" +
                 ")";
 
+        String CREATE_BOOKING_TABLE = "CREATE TABLE " + TABLE_Booking +
+                "(" +
+                KEY_BOOKING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                KEY_USER_ID_BOOKING + " INTEGER," +
+                KEY_FACILITY + " TEXT," +
+                KEY_STATUS + " TEXT," +
+                KEY_DATE + " TEXT," +
+                KEY_TIME + " TEXT," +
+                KEY_DURATION + " TEXT," +
+                "FOREIGN KEY ("+KEY_USER_ID_BOOKING+") REFERENCES " + TABLE_User+"("+KEY_USER_ID+")"+
+                ")";
+
         sqLiteDatabase.execSQL(CREATE_USER_TABLE);
+        sqLiteDatabase.execSQL(CREATE_BOOKING_TABLE);
     }
 
     @Override
@@ -157,6 +182,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return user_list;
     }
 
+    public long addBooking(Booking booking){
+        SQLiteDatabase db = getWritableDatabase();
+
+        long bookingID = -1;
+
+        db.beginTransaction();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(KEY_USER_ID_BOOKING, booking.getUserID());
+            values.put(KEY_FACILITY, booking.getFacility());
+            values.put(KEY_STATUS, booking.getStatus());
+            values.put(KEY_DATE, booking.getDate());
+            values.put(KEY_TIME, booking.getTime());
+            values.put(KEY_DURATION, booking.getDuration());
+
+            // First try to update the user in case the user already exists in the database
+            // This assumes userNames are unique
+
+
+
+            bookingID = db.insertOrThrow(TABLE_Booking, null, values);
+            Log.d("add","bookingID = " + bookingID);
+            db.setTransactionSuccessful();
+
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to add or update user");
+        } finally {
+            db.endTransaction();
+        }
+        return bookingID;
+
+    }
+
     public List<User> getUser(String username){
         List<User> user_list = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
@@ -185,6 +243,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return user_list;
+
+    }
+
+    public List<Booking> getBookings(String userID){
+        List<Booking> bookingList = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TABLE_Booking, null,KEY_USER_ID_BOOKING + "= ?",new String[]{userID}, null, null, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    Booking newBooking = new Booking();
+                    newBooking.setBookingID(""+ cursor.getInt(cursor.getColumnIndex(KEY_BOOKING_ID)));
+                    newBooking.setUserID(cursor.getString(cursor.getColumnIndex(KEY_USER_ID_BOOKING)));
+                    newBooking.setFacility(cursor.getString(cursor.getColumnIndex(KEY_FACILITY)));
+                    newBooking.setStatus(cursor.getString(cursor.getColumnIndex(KEY_STATUS)));
+                    newBooking.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+                    newBooking.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
+                    newBooking.setDuration(cursor.getString(cursor.getColumnIndex(KEY_DURATION)));
+
+                    bookingList.add(newBooking);
+                } while(cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return bookingList;
 
     }
 }

@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.UserHomePage"></activity>
+        <activity android:name=".Activities.createBookingActivity"></activity>
+        <activity android:name=".Activities.BookingActivity" />
+        <activity android:name=".Activities.UserHomePage" />
         <activity
             android:name=".Activities.SignUp"
             android:parentActivityName=".Activities.LoginActivity">

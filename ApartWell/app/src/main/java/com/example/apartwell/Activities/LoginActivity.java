@@ -2,7 +2,6 @@ package com.example.apartwell.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import com.example.apartwell.R;
 import com.example.apartwell.database.DatabaseHelper;
 import com.example.apartwell.models.User;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         else{
             User u = ul.get(0);
+            UserHomePage.myUser = u;
             if(u.getPassword().equals(pwd)){
                 Intent intent = new Intent(view.getContext(),UserHomePage.class);
                 startActivity(intent);

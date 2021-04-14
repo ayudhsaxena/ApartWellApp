@@ -16,4 +16,21 @@
     <string name="nextButton">Next</string>
     <string name="incorrectPassword">The password entered is incorrect</string>
     <string name="missingUsername">This username doesn\'t exist</string>
+    <string name="profileText">Profile</string>
+    <string name="complaintsText">Complaints</string>
+    <string name="bookingsText">Bookings</string>
+    <string name="booking_id">Booking ID :</string>
+    <string name="facility">Facility :</string>
+    <string name="status">Status :</string>
+    <string name="date">Date :</string>
+    <string name="time">Time :</string>
+    <string name="duration_hrs">Duration (hrs) :</string>
+    <string name="new_booking">New Booking</string>
+    <string name="create_booking">Create Booking</string>
+    <string-array name="facility_Array">
+        <item>Badminton</item>
+        <item>Tennis</item>
+        <item>Table Tennis</item>
+        <item>Community Hall</item>
+    </string-array>
 </resources>
