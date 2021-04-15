@@ -154,7 +154,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:textSize="12sp"
+                android:textSize="10.5sp"
                 app:layout_constraintStart_toEndOf="@+id/textView16"
                 app:layout_constraintTop_toTopOf="@+id/textView16" />
 
