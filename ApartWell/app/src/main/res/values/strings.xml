@@ -27,6 +27,14 @@
     <string name="duration_hrs">Duration (hrs) :</string>
     <string name="new_booking">New Booking</string>
     <string name="create_booking">Create Booking</string>
+    <string name="register_complaint">Register Complaint</string>
+    <string name="description">Description :</string>
+    <string name="comments">Comments :</string>
+    <string name="complaint_id">Complaint ID :</string>
+    <string name="urgent">Urgent :</string>
+    <string name="new_complaint">New Complaint</string>
+    <string name="yes_switch">YES</string>
+    <string name="no_Switch">NO</string>
     <string-array name="facility_Array">
         <item>Badminton</item>
         <item>Tennis</item>

@@ -1,6 +1,5 @@
 package com.example.apartwell.Adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d("BIND", "pos = " + position);
         String facility = bookingList.get(position).getFacility();
         holder.mBookingIDView.setText(bookingList.get(position).getBookingID());
         holder.mStatusView.setText(bookingList.get(position).getStatus());
@@ -47,7 +45,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             break;
             case  "Community Hall" : holder.mImageView.setImageResource(R.drawable.hall);
             break;
-            case "Table Tennis " : holder.mImageView.setImageResource(R.drawable.tt);
+            case "Table Tennis" : holder.mImageView.setImageResource(R.drawable.tt);
             break;
         }
     }

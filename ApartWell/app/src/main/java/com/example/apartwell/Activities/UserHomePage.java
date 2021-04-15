@@ -25,4 +25,11 @@ public class UserHomePage extends AppCompatActivity {
         Intent intent = new Intent(this,BookingActivity.class);
         startActivity(intent);
     }
+
+    public void openComplaints(View view){
+        AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.5F);
+        view.startAnimation(buttonClick);
+        Intent intent = new Intent(this, ComplaintActivity.class);
+        startActivity(intent);
+    }
 }

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.apartwell.models.Booking;
+import com.example.apartwell.models.Complaint;
 import com.example.apartwell.models.User;
 
 import java.util.ArrayList;
@@ -19,11 +20,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper sInstance;
 
     private static final  String DATABASE_NAME = "AMS";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // Table Names
     private static final String TABLE_User = "User";
     private static final String TABLE_Booking = "Booking";
+    private static final String TABLE_Complaint = "Complaint";
 
     // User Table Columns
     private static final String KEY_USER_ID = "user_id";
@@ -42,6 +44,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_DATE = "date";
     private static final String KEY_TIME = "time";
     private static final String KEY_DURATION = "duration";
+
+    // Complaint Table Columns
+    private static final String KEY_COMPLAINT_ID = "complaint_id";
+    private static final String KEY_USER_ID_COMPLAINT = KEY_USER_ID;
+    private static final String KEY_STATUS_COMPLAINT = "status";
+    private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_URGENT = "urgent";
+    private static final String KEY_DATETIME = "date_time";
+    private static final String KEY_COMMENTS = "comments";
 
 
 
@@ -74,8 +85,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY ("+KEY_USER_ID_BOOKING+") REFERENCES " + TABLE_User+"("+KEY_USER_ID+")"+
                 ")";
 
+        String CREATE_COMPLAINT_TABLE = "CREATE TABLE " + TABLE_Complaint +
+                "(" +
+                KEY_COMPLAINT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                KEY_USER_ID_COMPLAINT + " INTEGER," +
+                KEY_STATUS_COMPLAINT + " TEXT," +
+                KEY_DESCRIPTION + " TEXT," +
+                KEY_URGENT + " TEXT," +
+                KEY_DATETIME + " TEXT," +
+                KEY_COMMENTS + " TEXT," +
+                "FOREIGN KEY ("+KEY_USER_ID_COMPLAINT+") REFERENCES " + TABLE_User+"("+KEY_USER_ID+")"+
+                ")";
+
         sqLiteDatabase.execSQL(CREATE_USER_TABLE);
         sqLiteDatabase.execSQL(CREATE_BOOKING_TABLE);
+        sqLiteDatabase.execSQL(CREATE_COMPLAINT_TABLE);
     }
 
     @Override
@@ -275,5 +299,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return bookingList;
 
     }
-}
 
+
+    public long addComplaint(Complaint complaint){
+        SQLiteDatabase db = getWritableDatabase();
+
+        long complaintID = -1;
+
+        db.beginTransaction();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(KEY_USER_ID_BOOKING, complaint.getUser_id());
+            values.put(KEY_STATUS_COMPLAINT, complaint.getStatus());
+            values.put(KEY_DESCRIPTION, complaint.getDescription());
+            values.put(KEY_URGENT, complaint.getUrgent());
+            values.put(KEY_DATETIME, complaint.getDate_time());
+            values.put(KEY_COMMENTS, complaint.getComments());
+
+            // First try to update the user in case the user already exists in the database
+            // This assumes userNames are unique
+
+
+
+            complaintID = db.insertOrThrow(TABLE_Complaint, null, values);
+            Log.d("add","complaintID = " + complaintID);
+            db.setTransactionSuccessful();
+
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to add or update user");
+        } finally {
+            db.endTransaction();
+        }
+        return complaintID;
+
+    }
+
+    public List<Complaint> getComplaints(String userID){
+        List<Complaint> complaintList = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TABLE_Complaint, null,KEY_USER_ID_COMPLAINT + "= ?",new String[]{userID}, null, null, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    Complaint newComplaint = new Complaint();
+                    newComplaint.setComplaint_id("" + cursor.getInt(cursor.getColumnIndex(KEY_COMPLAINT_ID)));
+                    newComplaint.setUser_id(cursor.getString(cursor.getColumnIndex(KEY_USER_ID_COMPLAINT)));
+                    newComplaint.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
+                    newComplaint.setStatus(cursor.getString(cursor.getColumnIndex(KEY_STATUS_COMPLAINT)));
+                    newComplaint.setDate_time(cursor.getString(cursor.getColumnIndex(KEY_DATETIME)));
+                    newComplaint.setUrgent(cursor.getString(cursor.getColumnIndex(KEY_URGENT)));
+                    newComplaint.setComments(cursor.getString(cursor.getColumnIndex(KEY_COMMENTS)));
+
+                    complaintList.add(newComplaint);
+                } while(cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return complaintList;
+
+    }
+
+}
