@@ -9,15 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.createComplaintActivity"
-            android:parentActivityName=".Activities.ComplaintActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.ComplaintActivity" />
-        </activity>
-        <activity android:name=".Activities.ComplaintActivity"
+        <activity android:name=".Activities.NoticeboardActivity"
             android:parentActivityName=".Activities.UserHomePage">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -25,16 +17,36 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.UserHomePage" />
         </activity>
-        <activity android:name=".Activities.createBookingActivity"
-        android:parentActivityName=".Activities.BookingActivity" >
+        <activity
+            android:name=".Activities.createComplaintActivity"
+            android:parentActivityName=".Activities.ComplaintActivity">
 
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Activities.BookingActivity"/>
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ComplaintActivity" />
         </activity>
-        <activity android:name=".Activities.BookingActivity"
-            android:parentActivityName=".Activities.UserHomePage" >
+        <activity
+            android:name=".Activities.ComplaintActivity"
+            android:parentActivityName=".Activities.UserHomePage">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.UserHomePage" />
+        </activity>
+        <activity
+            android:name=".Activities.createBookingActivity"
+            android:parentActivityName=".Activities.BookingActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.BookingActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.BookingActivity"
+            android:parentActivityName=".Activities.UserHomePage">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -42,16 +54,18 @@
                 android:value=".Activities.UserHomePage" />
         </activity>
         <activity android:name=".Activities.UserHomePage" />
-        <activity android:name=".Activities.EditProfile"
-            android:parentActivityName=".Activities.Profile_view" >
+        <activity
+            android:name=".Activities.EditProfile"
+            android:parentActivityName=".Activities.Profile_view">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.Profile_view" />
         </activity>
-        <activity android:name=".Activities.Profile_view"
-            android:parentActivityName=".Activities.UserHomePage" >
+        <activity
+            android:name=".Activities.Profile_view"
+            android:parentActivityName=".Activities.UserHomePage">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userhomepage_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.UserHomePage">
@@ -49,8 +50,8 @@
 
     <ImageView
         android:id="@+id/sun_img"
-        android:layout_width="215dp"
-        android:layout_height="264dp"
+        android:layout_width="216dp"
+        android:layout_height="254dp"
         android:layout_marginStart="77dp"
         android:layout_marginLeft="77dp"
         android:adjustViewBounds="true"
@@ -85,10 +86,40 @@
         app:srcCompat="@drawable/building" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/edit_profile_card"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="openProfile"
+        app:cardBackgroundColor="#b8e994"
+        app:layout_constraintBottom_toTopOf="@+id/building_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookings_card"
+        app:layout_constraintVertical_bias="0.22000003">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/passion_one"
+                android:gravity="center"
+                android:text="@string/profileText"
+                android:textColor="#222222"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/bookings_card"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cardBackgroundColor="#CDDC39"
+        app:cardBackgroundColor="#38ada9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
@@ -114,13 +145,14 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/edit_profile_card"
+        android:id="@+id/noitceboard_card"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="openProfile"
-        app:cardBackgroundColor="#CDDC39"
+        android:onClick="openNoticeboard"
+        app:cardBackgroundColor="#78e08f"
         app:layout_constraintBottom_toTopOf="@+id/building_img"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookings_card"
         app:layout_constraintVertical_bias="0.22000003">
@@ -135,9 +167,9 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/passion_one"
                 android:gravity="center"
-                android:text="@string/profileText"
+                android:text="@string/noticeboard"
                 android:textColor="#222222"
-                android:textSize="20sp" />
+                android:textSize="19sp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
@@ -147,7 +179,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="openComplaints"
-        app:cardBackgroundColor="#CDDC39"
+        app:cardBackgroundColor="#1EA6CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.24"

@@ -44,6 +44,13 @@
     <string name="edit">Edit</string>
     <string name="edit_your_info">Edit your Info</string>
     <string name="email_id">Email ID :</string>
+    <string name="noticeboard">Noticeboard</string>
+    <string name="covid_guidelines">COVID Guidelines</string>
+    <string name="april_13_2021_4_00_pm">April 13, 2021 4:00 PM</string>
+    <string name="body_notice1">• Don\'t forget the basics of good hygiene • Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water. This eliminates germs including viruses that may be on your hands. • Avoid touching your eyes, nose and mouth. Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth.</string>
+    <string name="timings">Morning Timings: 8 AM : 9 AM \nEvening Timings: 8 PM : 9 PM</string>
+    <string name="new_gym_timings">New Gym Timings</string>
+    <string name="april_14_2021_1_00_pm">April 14 2021 1:00 PM</string>
     <string-array name="facility_Array">
         <item>Badminton</item>
         <item>Tennis</item>

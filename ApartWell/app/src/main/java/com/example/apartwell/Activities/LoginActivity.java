@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             UserHomePage.myUser = u;
             if(u.getPassword().equals(pwd)){
                 Intent intent = new Intent(view.getContext(),UserHomePage.class);
+                intent.putExtra("from","loginPage");
                 startActivity(intent);
             }
             else{
