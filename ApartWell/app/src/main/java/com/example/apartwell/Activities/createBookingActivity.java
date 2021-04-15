@@ -68,6 +68,7 @@ public class createBookingActivity extends AppCompatActivity {
         DatabaseHelper db = DatabaseHelper.getInstance(this);
         db.addBooking(b);
         Intent intent = new Intent(this,BookingActivity.class);
+        intent.putExtra("from","createBooking");
         startActivity(intent);
     }
 }

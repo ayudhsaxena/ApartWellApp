@@ -7,20 +7,34 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.example.apartwell.R;
 import com.example.apartwell.database.DatabaseHelper;
 import com.example.apartwell.models.User;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-
+    public static Snackbar signUpSnackBar,logoutSnackBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Intent intent = getIntent();
+        String s = "Account created successfully!";
+        String s2 = "Logged out successfully!";
+        CoordinatorLayout layout = findViewById(R.id.loginCoordinatorLayout);
+        signUpSnackBar = Snackbar.make(layout,s, BaseTransientBottomBar.LENGTH_LONG);
+        logoutSnackBar = Snackbar.make(layout,s2, BaseTransientBottomBar.LENGTH_LONG);
+        if( intent.getStringExtra("from") != null && intent.getStringExtra("from").equals("signUp")){
+            signUpSnackBar.show();
+        }
+        else if( intent.getStringExtra("from") != null && intent.getStringExtra("from").equals("logout")){
+            logoutSnackBar.show();
+        }
     }
 
     public void userLogin(final View view){

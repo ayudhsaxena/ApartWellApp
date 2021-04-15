@@ -46,6 +46,7 @@ public class createComplaintActivity extends AppCompatActivity {
         db.addComplaint(c);
 
         Intent intent = new Intent(this,ComplaintActivity.class);
+        intent.putExtra("from","createComplaint");
         startActivity(intent);
     }
 

@@ -35,6 +35,15 @@
     <string name="new_complaint">New Complaint</string>
     <string name="yes_switch">YES</string>
     <string name="no_Switch">NO</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="apartwell_at_your_service">ApartWell at your Service</string>
+    <string name="username">Username :</string>
+    <string name="name">Name :</string>
+    <string name="phone">Phone :</string>
+    <string name="edit">Edit</string>
+    <string name="edit_your_info">Edit your Info</string>
+    <string name="email_id">Email ID :</string>
     <string-array name="facility_Array">
         <item>Badminton</item>
         <item>Tennis</item>

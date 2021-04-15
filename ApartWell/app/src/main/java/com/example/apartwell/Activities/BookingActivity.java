@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,8 @@ import com.example.apartwell.Adapters.BookingAdapter;
 import com.example.apartwell.R;
 import com.example.apartwell.database.DatabaseHelper;
 import com.example.apartwell.models.Booking;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -22,12 +25,19 @@ public class BookingActivity extends AppCompatActivity {
     protected RecyclerView recyclerView;
     protected RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+    public static Snackbar bookingSnackBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         Intent intent = getIntent();
+        String s = "New booking added succesfully!";
+        ConstraintLayout layout = findViewById(R.id.booking_layout);
+        bookingSnackBar = Snackbar.make(layout,s, BaseTransientBottomBar.LENGTH_LONG);
+        if( intent.getStringExtra("from") != null && intent.getStringExtra("from").equals("createBooking")){
+            bookingSnackBar.show();
+        }
         recyclerView = findViewById(R.id.booking_list);
         recyclerView.setLayoutManager(layoutManager);
         DatabaseHelper db = DatabaseHelper.getInstance(this);
