@@ -1,2 +1,2 @@
 # ApartWellApp
-   Appartment Management System
+   Apartment Management System
